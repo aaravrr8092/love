@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Miss You</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  font-family:'Poppins',Arial,sans-serif;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Main container */
+.container{
+  z-index:2;
+  padding:20px;
+}
+
+/* Title */
+h1{
+  font-size:3em;
+  letter-spacing:2px;
+  margin-bottom:10px;
+  animation:glow 3s ease-in-out infinite;
+}
+
+@keyframes glow{
+  0%{opacity:0.6;text-shadow:0 0 5px #fff;}
+  50%{opacity:1;text-shadow:0 0 25px #ff4d6d;}
+  100%{opacity:0.6;text-shadow:0 0 5px #fff;}
+}
+
+/* Lyrics fade-in */
+.lyrics{
+  margin-top:15px;
+  font-size:1.1em;
+  color:#ffd6e0;
+  opacity:0;
+  animation:fadeLyrics 4s ease-in-out forwards;
+  animation-delay:3s;
+}
+
+@keyframes fadeLyrics{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Button */
+button{
+  margin-top:25px;
+  padding:14px 32px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(255,77,109,0.4);
+}
+
+/* Floating hearts & petals */
+.heart, .petal{
+  position:absolute;
+  animation:float 9s linear infinite;
+  opacity:0.85;
+}
+
+.heart{
+  font-size:22px;
+}
+
+.petal{
+  font-size:20px;
+}
+
+@keyframes float{
+  from{transform:translateY(110vh) rotate(0deg);}
+  to{transform:translateY(-10vh) rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>❤️ I Love You Baby ❤️</h1>
+  <div class="lyrics">Every moment feels incomplete without you ✨</div>
+  <button onclick="playMusic()">Tap to play music 🎵</button>
+</div>
+
+<!-- 🎵 Local MP3 from repo -->
+<audio id="music" loop>
+  <source src="sitaare.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic(){
+  document.getElementById("music").play();
+}
+
+/* Red hearts */
+for(let i=0;i<20;i++){
+  let h=document.createElement("div");
+  h.innerHTML="❤️";
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDelay=Math.random()*9+"s";
+  document.body.appendChild(h);
+}
+
+/* Rose petals */
+for(let i=0;i<25;i++){
+  let p=document.createElement("div");
+  p.innerHTML="🌹";
+  p.className="petal";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDelay=Math.random()*9+"s";
+  document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
